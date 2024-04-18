@@ -8,13 +8,13 @@ with open('zzz_pareto_czasy.txt') as f:
 # print('avg time hlga ' + str(mean([eval(i) for i in content[15:23]])))
 # print('avg time ffga ' + str(mean([eval(i) for i in content[25:30]])))
 # print('avg time vega ' + str(mean([eval(i) for i in content[33:38]])))
-# print('avg time ew ' + str(mean([eval(i) for i in content[3:12]])))
+# print('avg time ew ' + str(mean([eval(i) for i in content[3:9]])))
 
 # print('PL std dev')
 # print('std dev hlga ' + str(statistics.pstdev([eval(i) for i in content[15:23]])))
 # print('std dev ffga ' + str(statistics.pstdev([eval(i) for i in content[25:30]])))
 # print('std dev vega ' + str(statistics.pstdev([eval(i) for i in content[33:38]])))
-# print('std dev ew ' + str(statistics.pstdev([eval(i) for i in content[3:12]])))
+# print('std dev ew ' + str(statistics.pstdev([eval(i) for i in content[3:9]])))
 
 
 with open('zzz_pareto_.txt') as f:
@@ -56,9 +56,26 @@ def biggest_POS_for_dics(my_dict):
         if new_mean > biggest_mean :
             biggest_mean = new_mean
             gen_nr = key
-    return gen_nr, biggest_mean
+    st_dev = statistics.pstdev([eval(i) for i in my_dict[gen_nr]])
+    return gen_nr, biggest_mean, st_dev
 
 
 #HLGA
-print(get_gens_from_file(1106,1921))
+# print(get_gens_from_file(1106,1921))
+print('HLGA ') 
 print(biggest_POS_for_dics(get_gens_from_file(1106,1921)))
+print('FFGA ') 
+print(biggest_POS_for_dics(get_gens_from_file(1942, 2433)))
+print('VEGA ') 
+print(biggest_POS_for_dics(get_gens_from_file(2437, 3009)))
+
+print('EV ') 
+# print(biggest_POS_for_dics(get_gens_from_file(2437, 3009)))
+print(str(mean([12,34,25,30,24,29])) + ' ' + str(statistics.pstdev([12,34,25,30,24,29])))
+
+
+
+# generacje hlga 69, ffga 95, vega 90 ew..?
+
+# print("Weryfikacja")
+# print(statistics.pstdev([13,15,18,12,11,21,19,]))

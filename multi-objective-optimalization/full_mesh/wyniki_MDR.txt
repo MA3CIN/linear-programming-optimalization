@@ -1,0 +1,21 @@
+FFGA i HLGA 
+61
+137
+FFGA i VEGA 
+378
+51
+FFGA i EW 
+23
+59
+HLGA i VEGA 
+0
+35
+HLGA i EW 
+0
+42
+VEGA i EW 
+8
+79
+
+
+--------------- bez-duplikatow!

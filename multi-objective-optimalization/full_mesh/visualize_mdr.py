@@ -17,8 +17,8 @@ import numpy as np
 fig, ax = plt.subplots()
 
 x = np.arange(6) 
-y1 = [0, 0, 0, 0, 0, 0] 
-y2 = [0, 1500, 289, 0, 142, 0] 
+y1 = [61, 378, 23, 0, 0, 8] 
+y2 = [137, 51, 59, 35, 42, 79] 
 width = 0.35
   
 # plot data in grouped manner of bar type 

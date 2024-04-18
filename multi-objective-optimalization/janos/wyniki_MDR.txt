@@ -1,0 +1,18 @@
+FFGA i HLGA 
+3
+43
+FFGA i VEGA 
+0
+1500
+FFGA i EW 
+0
+286
+HLGA i VEGA 
+0
+0
+HLGA i EW 
+7
+72
+VEGA i EW 
+0
+0
