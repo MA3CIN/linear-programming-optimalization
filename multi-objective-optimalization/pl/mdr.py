@@ -4,23 +4,22 @@ from statistics import mean
 with open('zzz_pareto_individuals_MDR.txt') as f:
     content = f.read().splitlines() 
 
-
-# pojedynczy wynik dla ostatniej generacji
-print (content[7].split(","))
-# print([eval(i) for i in content[18:28]])
-
-# FFGA 4,90,165,248,321,399,466,538,609,678,752
-# HLGA
-
-ffga_mdr=[content[4:90].split(",")]
-print(ffga_mdr)
+def get_MDR_from_file(start,end):
+    start = start -1
+    MDR = []
+    for i in range(start,end):   # 3,6 -> 3,4,5
+        MDR.append(content[i].split(","))
+    return MDR
 
 def dominates(a,b):
+    print(a)
+    print(b)
     if  a[1] < b[1] or a[2] < b[2] or a[3] < b[3]:
         if a[1] < b[1] and a[2] < b[2] and a[3] < b[3]:
+            print(a + " Dominates " + b +  " \n") 
             return True
-    else:
-        return False
+    print(str(a) + " Does not dominate" + str(b) + " \n")
+    return False
 
 # one's MDR score is +1 for each solution from one that is dominated by any solution from two?
 def get_mdr_for_two(one,two):
@@ -33,6 +32,36 @@ def get_mdr_for_two(one,two):
     return mdr_score
 
 
+# FFGA 
+# HLGA  1516-1601, 1603-1689, 1691-1786, 1787-1875, 1877-1983, 1985-2078, 2080-2178, 2180-2272,2273-2356, 2358-2466
+# VEGA 3-152, 154-303,305-454, 456-605, 607-756, 758-907, 909-1059, 1060-1209, 1211-1360, 1362-1511
+# EW skip for now
+
+# ffga_mdr=[content[4:90].split(",")]
+# print(ffga_mdr)
+# HLGA_indices=[]
+# HLGA = []
+# for i in range(10):
+#     HLGA.append(get_MDR_from_file(1516,1601))
+# VEGA = []
+# for i in range(10):
+#     VEGA.append(get_MDR_from_file(3,152))
+
+# print('HLGA + \n')
+# print(HLGA)
+
+# print('VEGA + \n')
+# print(VEGA)
+
+# print(get_mdr_for_two(HLGA,VEGA))
+
+# print(get_mdr_for_two(VEGA,HLGA))
+
+print("huh")
+print(dominates(content[1499].split(","),content[1530].split(",")))
+
+
+
 # 10 uruchomien, 6 krzyzy:
 # FFGA i HLGA
 # FFGA i VEGA
@@ -42,20 +71,3 @@ def get_mdr_for_two(one,two):
 # HLGA i EW
 
 # VEGA i EW
-
-#ale to moze lepiej dla PL sieci jak zwerfyikowane wyniki bd, idk
-
-
-# print('JANOS')
-# print('avg time hlga ' + str(mean([eval(i) for i in content[18:28]])))
-# print('avg time ffga ' + str(mean([eval(i) for i in content[5:15]])))
-# print('avg time vega ' + str(mean([eval(i) for i in content[31:41]])))
-# print('avg time ew ' + str(mean([eval(i) for i in content[44:54]])))
-
-# print('JANOS std dev')
-# print('std dev hlga ' + str(statistics.pstdev([eval(i) for i in content[18:28]])))
-# print('std dev ffga ' + str(statistics.pstdev([eval(i) for i in content[5:15]])))
-# print('std dev vega ' + str(statistics.pstdev([eval(i) for i in content[31:41]])))
-# print('std dev ew ' + str(statistics.pstdev([eval(i) for i in content[44:54]])))
-
-
