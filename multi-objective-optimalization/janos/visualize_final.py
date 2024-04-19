@@ -17,12 +17,12 @@ import numpy as np
 fig, ax = plt.subplots()
 
 x = np.arange(6) 
-y1 = [0.3, 0, 0, 0, 0.7, 0] 
-y2 = [4.3, 150, 28.6, 0, 7.2, 0] 
+y1 = [0.3, 2.1, 3.4, 1.5, 0.7, 3.1] 
+y2 = [4.3, 50, 28.6, 1.9, 7.2, 1.9] 
 width = 0.35
   
-error1 = [0.3,0,0,0,0.7,0] 
-error2 = [2,0,6.6,0,2,0]
+error1 = [0.3,0.42,0.74,0.3,0.7,0.34] 
+error2 = [2,0,6.6,0.47,2,0.27]
 
 
 # plot data in grouped manner of bar type 
