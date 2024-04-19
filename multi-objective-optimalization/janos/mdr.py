@@ -1,4 +1,6 @@
 from statistics import mean
+import scipy.stats as st 
+import math
 
 with open('zzz_pareto_individuals_MDR.txt') as f:
     content = f.read().splitlines() 
@@ -75,8 +77,9 @@ def dominates(a,b):
 # nr_proby, wynik, wynik, wynik, liczebnosc
 
 def get_mdr_for_two(one,two):
-    mdr_score = 0
+    all_scores=[]
     for i in range(1,11):
+        mdr_score = 0
         one_stripped = [x for x in one if x[0] == i]
         two_stripped = [x for x in two if x[0] == i]
         for i in range (0, len(one_stripped)):
@@ -85,35 +88,45 @@ def get_mdr_for_two(one,two):
                     mdr_score += one_stripped[i][4]
                     print("dodaje do zdominowanego!!")
                     break
-    return str(mdr_score)
+        all_scores.append(mdr_score)
+    return (all_scores)
+
+
+def writeResultsToFile(array):
+    values = st.t.interval(confidence=0.90, 
+              df=len(array)-1, 
+              loc=mean(array),  
+              scale=st.sem(array))
+    f.write(str(array) + " " + str(mean(array)) + " " + str(mean(array)-values[0])+ "\n")
 
 
 f = open("wyniki_MDR.txt", "a")
 
 
 f.write("FFGA i HLGA \n")
-f.write(get_mdr_for_two(FFGA,HLGA) + "\n")
-f.write(get_mdr_for_two(HLGA,FFGA) + "\n")
+writeResultsToFile(get_mdr_for_two(FFGA,HLGA))
+writeResultsToFile(get_mdr_for_two(HLGA,FFGA))
+
 
 f.write("FFGA i VEGA \n")
-f.write(get_mdr_for_two(FFGA,VEGA) + "\n")
-f.write(get_mdr_for_two(VEGA,FFGA) + "\n")
+writeResultsToFile(get_mdr_for_two(FFGA,VEGA))
+writeResultsToFile(get_mdr_for_two(VEGA,FFGA))
 
 f.write("FFGA i EW \n")
-f.write(get_mdr_for_two(FFGA,EW) + "\n")
-f.write(get_mdr_for_two(EW,FFGA) + "\n")
+writeResultsToFile(get_mdr_for_two(FFGA,EW))
+writeResultsToFile(get_mdr_for_two(EW,FFGA))
 
 f.write("HLGA i VEGA \n")
-f.write(get_mdr_for_two(HLGA,VEGA) + "\n")
-f.write(get_mdr_for_two(VEGA,HLGA) + "\n")
+writeResultsToFile(get_mdr_for_two(HLGA,VEGA))
+writeResultsToFile(get_mdr_for_two(VEGA,HLGA))
 
 f.write("HLGA i EW \n")
-f.write(get_mdr_for_two(HLGA,EW) + "\n")
-f.write(get_mdr_for_two(EW,HLGA) + "\n")
+writeResultsToFile(get_mdr_for_two(HLGA,EW))
+writeResultsToFile(get_mdr_for_two(EW,HLGA))
+
 
 f.write("VEGA i EW \n")
-f.write(get_mdr_for_two(VEGA,EW) + "\n")
-f.write(get_mdr_for_two(EW,VEGA) + "\n")
-
+writeResultsToFile(get_mdr_for_two(VEGA,EW))
+writeResultsToFile(get_mdr_for_two(EW,VEGA))
 
 f.close()
