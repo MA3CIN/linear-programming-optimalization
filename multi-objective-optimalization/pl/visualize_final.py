@@ -55,7 +55,7 @@ legend_properties = {'weight':'bold'}
 plt.legend(handles=[ffga_patch, hlga_patch, vega_patch, ew_patch], prop=legend_properties)
 
 plt.xlabel("")
-plt.ylabel("MDR",fontweight='bold')
+plt.ylabel("MDR",fontweight='bold', fontsize=14)
 
 
 plt.errorbar(x-0.19, y1, yerr=error1, color="black", capsize=7, ls='none')
@@ -63,7 +63,6 @@ plt.errorbar(x+0.19, y2, yerr=error2, color="black", ls='none', capsize=7)
 
 
 plt.gca().xaxis.set_major_locator(plt.NullLocator())
-
-
+ax.set_yticklabels(ax.get_yticks(), weight='bold')
 
 plt.show()
