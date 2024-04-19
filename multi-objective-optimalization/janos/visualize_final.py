@@ -51,15 +51,16 @@ hlga_patch = mpatches.Patch(color='blue', label='HLGA')
 vega_patch = mpatches.Patch(color='green', label='VEGA')
 ew_patch = mpatches.Patch(color='orange', label='EW')
 
-plt.legend(handles=[ffga_patch, hlga_patch, vega_patch, ew_patch])
+legend_properties = {'weight':'bold'}
+plt.legend(handles=[ffga_patch, hlga_patch, vega_patch, ew_patch], prop=legend_properties)
 
 plt.xlabel("")
-plt.ylabel("MDR")
+plt.ylabel("MDR",fontweight='bold')
 
 plt.gca().xaxis.set_major_locator(plt.NullLocator())
 
-plt.errorbar(x-0.19, y1, yerr=error1, fmt="o", color="black")
-plt.errorbar(x+0.19, y2, yerr=error2, fmt="o", color="black")
+plt.errorbar(x-0.19, y1, yerr=error1, color="black", capsize=7, ls='none')
+plt.errorbar(x+0.19, y2, yerr=error2, color="black", ls='none', capsize=7)
 
 
 plt.show()

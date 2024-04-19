@@ -1,6 +1,5 @@
 from statistics import mean
 import scipy.stats as st 
-import math
 
 with open('zzz_pareto_individuals_MDR.txt') as f:
     content = f.read().splitlines() 
